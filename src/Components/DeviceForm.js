@@ -157,7 +157,7 @@ const DeviceForm = () => {
       Issues:issue,
       Phone_Number:phoneNumber,
     }
-    axios.post('https://sheet.best/api/sheets/15c0842a-05e3-4e79-8b91-f63a36a5f939',data).then((response)=>{
+    axios.post(process.env.REACT_APP_LINK,data).then((response)=>{
       console.log(response)
       setDevice('');
       setModel('');
