@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import  axios  from 'axios';
 import ListGroup from 'react-bootstrap/ListGroup';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -7,11 +7,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Logo from "../Assets/company_logo.png";
 const DeviceForm = () => {
+  
   const [device, setDevice] = useState('');
   const [model, setModel] = useState('');
   const [selectedIssues, setSelectedIssues] = useState([]);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [step, setStep] = useState(1);
+  const [main,SetMain]=useState("https://wa.me/919060602460")
+
 
   const deviceOptions = ['iPhone', 'iWatch', 'iPad', 'MacBook'];
   const iphoneModels = [
@@ -144,29 +147,39 @@ const DeviceForm = () => {
   function GoBack(){
     setStep(step-1)
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // console.log('Device:', device);
-    // console.log('Model:', model);
-     console.log('Issue:', ...selectedIssues);
-    // console.log('Phone Number:', phoneNumber);
-    const issue={...selectedIssues}
-    const data={
-      Device:device,
-      Model:model,
-      Issues:issue,
-      Phone_Number:phoneNumber,
-    }
-    axios.post(process.env.REACT_APP_LINK,data).then((response)=>{
-      console.log(response)
-      setDevice('');
-      setModel('');
-      setPhoneNumber('');
-    })
-  };
+  
 function handleNext(){
   setStep(step+1)
 }
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // console.log('Device:', device);
+  // console.log('Model:', model);
+   console.log('Issue:', ...selectedIssues);
+  // console.log('Phone Number:', phoneNumber);
+
+  const issue={...selectedIssues}
+  const data={
+    Device:device,
+    Model:model,
+    Issues:issue,
+    PhoneNumber:phoneNumber,
+  }
+  axios.post(process.env.REACT_APP_LINK,data).then((response)=>{
+    console.log(response)
+    setDevice('');
+    setModel('');
+    setPhoneNumber('');
+  })
+  
+
+  setStep(step+1)
+  let issues=JSON.stringify(selectedIssues)
+ let final="Device: "+device+"%20Model:"+model+"%20Issues:"+"%20"+issues
+  SetMain(`https://wa.me/919060602460?text=${final}`)
+  
+};
+
   return (
     <div className="device-form">
       <form onSubmit={handleSubmit}>
@@ -238,7 +251,7 @@ function handleNext(){
             <ul>
               {device === 'iPhone' &&
                 iphoneIssues.map((iphoneIssue, index) => (
-                  <ListGroup.Item action variant="warning my-3 mx-2">
+                
                   <li  key={index}>
                     <label>
                       <input
@@ -250,11 +263,10 @@ function handleNext(){
                       {iphoneIssue}
                     </label>
                   </li>
-                  </ListGroup.Item>
+                
                 ))}
               {device === 'iWatch' &&
                 iWatchIssues.map((iWatchIssue, index) => (
-                  <ListGroup.Item action variant="warning my-3 mx-2">
                   <li  key={index}>
                     <label>
                       <input
@@ -266,11 +278,9 @@ function handleNext(){
                       {iWatchIssue}
                     </label>
                   </li>
-                  </ListGroup.Item>
                 ))}
               {device === 'iPad' &&
                 ipadIssues.map((ipadIssue, index) => (
-                  <ListGroup.Item  action variant="warning my-3 mx-2">
                   <li  key={index}>
                     <label>
                       <input
@@ -282,11 +292,9 @@ function handleNext(){
                       {ipadIssue}
                     </label>
                   </li>
-                  </ListGroup.Item>
                 ))}
                 {device === 'MacBook' &&
                 macbookIssues.map((macbookIssues, index) => (
-                  <ListGroup.Item  action variant="warning my-3 mx-2">
                   <li  key={index}>
                     <label>
                       <input
@@ -298,7 +306,6 @@ function handleNext(){
                       {macbookIssues}
                     </label>
                   </li>
-                  </ListGroup.Item>
                 ))}
             </ul>
             
@@ -315,7 +322,7 @@ function handleNext(){
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Phone Number</Form.Label>
         <Form.Control name="data[number]"
-      type="tel"
+      type="text"
       placeholder="Phone Number"
       value={phoneNumber}
       onChange={(e) => setPhoneNumber(e.target.value)} />
@@ -324,20 +331,26 @@ function handleNext(){
      <Button  onClick={GoBack}variant="warning mx-2">Go back</Button>{' '}
       
     {phoneNumber.length === 10 ? (
-      <Button onClick={handleNext} variant="primary" type="submit">
+      <Button onClick={handleSubmit} variant="primary" >
       Submit
     </Button>
+    
       
     ) : (
       <p>Please enter a valid 10-digit phone number.</p>
     )}
+    
   </>
 )}
 
 {step === 5 && (
   <>
     <h2>Thank You We Will Contact You Soon!!!</h2>
-    <img  className="logo-work my-2" src={Logo} alt="" />
+    <img  className="logo-work my-2" src={Logo} alt="" /><br />
+
+<Button variant="warning mx-2"><a href={main}>Done</a> </Button>{' '}
+     
+    
   </>
 )}
 
