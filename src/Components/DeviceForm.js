@@ -350,7 +350,7 @@ const handleSubmit = (e) => {
   <>
     <h2>Thank You We Will Contact You Soon!!!</h2>
 
-<Button variant="warning mx-2"><a href={main}>Done</a> </Button>{' '}
+<Button variant="warning mx-2"><a href={main}>Get a Quote</a> </Button>{' '}
      
     
   </>
