@@ -175,7 +175,7 @@ const handleSubmit = (e) => {
   setStep(step+1)
   let issues=selectedIssues.join(" ")
   let space="      "
- let final=" Device: "+device+space+"%0a Model:  "+model+space+"   Issues: "+space+issues+space+"  phone no: "+space+phoneNumber+space+" www.mrapples.in"
+ let final=" Device: "+device+space+" Model:  "+model+space+"   Issues: "+space+issues+space+"  phone no: "+space+phoneNumber+space+" www.mrapples.in"
   SetMain(`https://wa.me/919060602460?text=${final}`)
   console.log(issues)
   
