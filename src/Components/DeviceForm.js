@@ -325,7 +325,7 @@ const handleSubmit = (e) => {
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Phone Number</Form.Label>
         <Form.Control name="data[number]"
-      type="text"
+      type="tel"
       placeholder="Phone Number"
       value={phoneNumber}
       onChange={(e) => setPhoneNumber(e.target.value)} />
