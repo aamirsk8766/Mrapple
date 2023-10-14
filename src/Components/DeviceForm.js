@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { FaApple } from "react-icons/fa"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Logo from "../Assets/company_logo.png";
 const DeviceForm = () => {
   
   const [device, setDevice] = useState('');
@@ -52,20 +51,20 @@ const DeviceForm = () => {
     'iPhone 5',
   ];
   const iphoneIssues=[
-    'Screen|Display Repair & Replacement',
-  'Back Glass Repair & Replacement',
-  'Battery Repair & Replacement',
-  'Charging Flex|Strip Repair & Replacement',
-  'Speaker|Ringer Repair & Replacement',
-  'Mic Repair & Replacement',
-  'Ear Speaker Repair & Replacement',
-  'Front Camera Repair & Replacement',
-  'Rear Camera Repair & Replacement',
-  'Light & Motion Sensor Repair & Replacement',
-  'Headphone Repair & Replacement',
-  'Power Button Repair & Replacement',
-  'Volume Button Repair & Replacement',
-  'Frame & Housing Repair & Replacement',
+    'Screen|Display Repair and Replacement',
+  'Back Glass Repair and Replacement',
+  'Battery Repair and Replacement',
+  'Charging Flex|Strip Repair and Replacement',
+  'Speaker|Ringer Repair and Replacement',
+  'Mic Repair and Replacement',
+  'Ear Speaker Repair and Replacement',
+  'Front Camera Repair and Replacement',
+  'Rear Camera Repair and Replacement',
+  'Light and Motion Sensor Repair and Replacement',
+  'Headphone Repair and Replacement',
+  'Power Button Repair and Replacement',
+  'Volume Button Repair and Replacement',
+  'Frame and Housing Repair and Replacement',
   'Other Problems - We will Contact you to find out more',
   ]
   const iWatchModels = [
@@ -81,8 +80,8 @@ const DeviceForm = () => {
     'Apple Watch Series 1',
   ];
   const iWatchIssues = [
-     'Apple Watch Screen|Display Repair & Replacement',
-    'Apple Watch Battery Repair & Replacement',
+     'Apple Watch Screen|Display Repair and Replacement',
+    'Apple Watch Battery Repair and Replacement',
     'Other Problems - We Will Contact you to find out more',
   ];
   const ipadModels = [
@@ -92,20 +91,20 @@ const DeviceForm = () => {
     'iPad Pro',
   ];
   const ipadIssues = [
-    'Screen|Display Repair & Replacement',
-    'Back Glass Repair & Replacement',
-    'Battery Repair & Replacement',
-    'Charging Flex|Strip Repair & Replacement',
-    'Speaker|Ringer Repair & Replacement',
-    'Mic Repair & Replacement',
-    'Ear Speaker Repair & Replacement',
-    'Front Camera Repair & Replacement',
-    'Rear Camera Repair & Replacement',
-    'Light & Motion Sensor Repair & Replacement',
-    'Headphone Repair & Replacement',
-    'Power Button Repair & Replacement',
-    'Volume Button Repair & Replacement',
-    'Frame & Housing Repair & Replacement',
+    'Screen|Display Repair and Replacement',
+    'Back Glass Repair and Replacement',
+    'Battery Repair and Replacement',
+    'Charging Flex|Strip Repair and Replacement',
+    'Speaker|Ringer Repair and Replacement',
+    'Mic Repair and Replacement',
+    'Ear Speaker Repair and Replacement',
+    'Front Camera Repair and Replacement',
+    'Rear Camera Repair and Replacement',
+    'Light and Motion Sensor Repair and Replacement',
+    'Headphone Repair and Replacement',
+    'Power Button Repair and Replacement',
+    'Volume Button Repair and Replacement',
+    'Frame and Housing Repair and Replacement',
     'Other Problems - We will Contact you to find out more',
   ];
   const macbookModels = [
@@ -115,15 +114,15 @@ const DeviceForm = () => {
     'MacBook Air',
   ];
   const macbookIssues = [
-     'MacBook Screen|Display Repair & Replacement',
-  'MacBook Hard Disk Drive Repair & Replacement',
-  'MacBook Motherboard Repair & Replacement',
-  'MacBook RAM Addition, Repair & Replacement',
+     'MacBook Screen|Display Repair and Replacement',
+  'MacBook Hard Disk Drive Repair and Replacement',
+  'MacBook Motherboard Repair and Replacement',
+  'MacBook RAM Addition, Repair and Replacement',
   'Mac OSX support',
-  'MacBook Battery Repair & Replacement',
-  'MacBook Keyboard Repair & Replacement',
-  'MacBook Camera Repair & Replacement',
-  'MacBook Trackpad Repair & Replacement',
+  'MacBook Battery Repair and Replacement',
+  'MacBook Keyboard Repair and Replacement',
+  'MacBook Camera Repair and Replacement',
+  'MacBook Trackpad Repair and Replacement',
   'Other Problems - We will Contact you to find out more',
   ];
 
@@ -174,9 +173,13 @@ const handleSubmit = (e) => {
   
 
   setStep(step+1)
-  let issues=JSON.stringify(selectedIssues)
- let final="Device: "+device+"%20Model:"+model+"%20Issues:"+"%20"+issues
+  let issues=selectedIssues.join(" ")
+  let space="      "
+ let final=" Device: "+device+space+"%0a Model:  "+model+space+"   Issues: "+space+issues+space+"  phone no: "+space+phoneNumber+space+" www.mrapples.com"
   SetMain(`https://wa.me/919060602460?text=${final}`)
+  console.log(issues)
+  
+  
   
 };
 
@@ -346,7 +349,6 @@ const handleSubmit = (e) => {
 {step === 5 && (
   <>
     <h2>Thank You We Will Contact You Soon!!!</h2>
-    <img  className="logo-work my-2" src={Logo} alt="" /><br />
 
 <Button variant="warning mx-2"><a href={main}>Done</a> </Button>{' '}
      
