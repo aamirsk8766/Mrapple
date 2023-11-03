@@ -17,6 +17,10 @@ const DeviceForm = () => {
 
   const deviceOptions = ['iPhone', 'iWatch', 'iPad', 'MacBook'];
   const iphoneModels = [
+    'iPhone 15',
+    'iPhone 15 Pro',
+    'iphone 15 Pro Max',
+    'iphone 15 Plus',
     'iPhone 14 Pro Max',
     'iPhone 14 Pro',
     'iPhone 14 Plus',
