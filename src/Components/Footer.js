@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <div className="footer-section-columns">
           <span>9060602460</span>
-          <span>mrappleindia@gmail.com</span><br />
+          <span>mrappleindia@gmail.com</span>
           <span><a href="https://www.linkedin.com/in/aamir-shaikh-aa3b6121b/">Aamir</a></span>
         </div>
         <div className="footer-section-columns">
