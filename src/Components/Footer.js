@@ -14,12 +14,13 @@ const Footer = () => {
         <div className="footer-section-columns">
           <span>Phone Number</span>
           <span>Email</span>
+          <span>Project By</span>
          
         </div>
         <div className="footer-section-columns">
           <span>9060602460</span>
           <span>mrappleindia@gmail.com</span><br />
-          
+          <span><a href="https://www.linkedin.com/in/aamir-shaikh-aa3b6121b/">Aamir</a></span>
         </div>
         <div className="footer-section-columns">
         </div>
